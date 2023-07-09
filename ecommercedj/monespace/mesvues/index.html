@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" >
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+</head>
+<body>
+<h2>Connexion</h2>
+
+    <form method="POST" class="post-form" action="/connecter">
+
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Mot de passe:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Se connecter">
+
+    </form>
+<a href="/crercompte"> Crer  compte</a>
+
+</body>
+</html>

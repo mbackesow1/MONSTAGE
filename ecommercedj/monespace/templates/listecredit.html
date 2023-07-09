@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau avec icônes et lien (Bootstrap)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des clients {{ noment|upper }}</h1>
+        <table class="table table-hover"">
+            <thead>
+                <tr>
+                    <th  scope="col">Nom du client</th>
+                    <th scope="col">Compte client</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usercre in usercre %}
+                <tr  scope="row">
+                    <td>{{ usercre.nomclt }}</td>
+                    <td><a href="/monespace/listcre/voircpt/idclt={{ usercre.idclt }}">Visitez-le compte</a></td>
+                    <td><a   class="text-black" href="#"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="#"  class="text-danger"><i class="fas fa-trash  text-dange "></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
