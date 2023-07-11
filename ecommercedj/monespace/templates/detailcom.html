@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire de Facturation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-
+</head>
+<body>
+    <div class="container">
+        <h2>Detail  Client</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Nom du Client:</strong>
+                <span id="nomClient"> {{user.nompreu}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Email:</strong>
+                <span id="email">{{user.emailu}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Téléphone:</strong>
+                <span id="telephone">{{user.teleu}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Adresse:</strong>
+                <span id="adresse">{{user.adresseu}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Entreprise:</strong>
+                <span id="adresse">{{user.entreprise}} </span>
+            </li>
+        </ul>
+        <br>
+        <!--<button type="button" class="btn btn-primary" onclick="afficherFacture()">Afficher la Facture</button>-->
+    </div>
+    <div class="container">
+        <h2>Detail  Commande</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Date:</strong>
+                <span id="nomClient"> {{com.date}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Type  de commande:</strong>
+                <span id="email">{{com.action}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Produit:</strong>
+                <span id="telephone">{{pro.description}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Prix Unitaire:</strong>
+                <span id="adresse">{{pro.price}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Quantité</strong>
+                <span id="adresse">{{detcom.quantite}} </span>
+            </li>
+            <li class="list-group-item">
+                <strong>Prix  total</strong>
+                <span id="adresse">{{com.total}} </span>
+            </li>
+        </ul>
+        <br>
+        <button type="button" class="btn btn-primary" onclick="afficherFacture()">Voir liste  commande</button>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function afficherFacture() {
+            var nomClient = document.getElementById("nomClient").textContent;
+            var email = document.getElementById("email").textContent;
+            var telephone = document.getElementById("telephone").textContent;
+            var adresse = document.getElementById("adresse").textContent;
+
+            alert("Nom du Client: " + nomClient + "\nEmail: " + email + "\nTéléphone: " + telephone + "\nAdresse: " + adresse);
+        }
+    </script>
+</body>
+</html>

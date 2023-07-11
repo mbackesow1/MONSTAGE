@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau avec icônes et lien (Bootstrap)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des clients {{ noment|upper }}</h1>
+        <table class="table table-hover"">
+            <thead>
+                <tr>
+                    <th  scope="col">Comande</th>
+                    <th></th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Total</th>
+                    <th>Vandor</th>
+                </tr>
+            </thead>
+         _
+            <tbody>
+                {% for lst in  lst %}
+                <tr  scope="row">
+                    <td># {{lst.idcom }}  {{ usercm.nomclt }}</td>
+                    <td><a href="/monespace/traitecommande/voirdtl/idcom={{ lst.idcom }}">voir detail</a></td>
+                    <td>{{ lst.date }}</a></td>
+                    <td>{{lst.total}}</td>
+                    <td>{{lst.vandor}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

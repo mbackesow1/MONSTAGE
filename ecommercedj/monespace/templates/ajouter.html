@@ -12,7 +12,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 </head>
-<body  class="d-flex align-items-center justify-content-center" style="background-color: #eee;">
+<body  class="" style="background-color: #eee;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="/media/photos/lo.JPG" alt="Logo"></a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Produits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="compte/idu={{  userlog.idu}}"><i class="fas fa-sign-in-alt"></i> Compte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container" >
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -46,11 +72,13 @@
 
       </td>
       <td>
-  <button class="btn btn-primary">Achetez</button>
+  <a class="btn btn-primary"  href="commande/idpro={{  products.idpro|urlencode }}&idclt={{userlog.idu|urlencode}}">
+      Achetez</a>
 
 
 
-        <button class="btn btn-success">Précommandez</button>
+        <a class="btn btn-primary"  href="precommande/idpro={{  products.idpro|urlencode }}&idclt={{userlog.idu|urlencode}}">
+            Précommandez</a>
         <button class="btn btn-info">Demandez du crédit</button>
       </td>
     </tr>

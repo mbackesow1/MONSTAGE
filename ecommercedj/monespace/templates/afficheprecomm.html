@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau avec boucle for</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Liste des precommnade  {{ usercmd.nompreu |upper }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Dtae Commande</th>
+                <th>Numero Devis</th>
+                <th>Description</th>
+
+                <th>Montant</th>
+                <th>Date d ' arrivé</th>
+                <th>Etat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usercre in lstpre %}
+                <tr>
+                    <td>{{ usercre.date }}</td>
+                    <td>{{ usercre.idpro}}</td>
+                    <td>{{ usercre.description }}</td>
+                    <td>{{ usercre.prix}}</i></a></td>
+                    <td>{{ usercre.nbrjour }} jours</td>
+                    <td>{{ usercre.etat }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

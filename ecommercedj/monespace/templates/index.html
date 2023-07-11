@@ -30,7 +30,6 @@
 
                 <form  method="Post" action="/monespace/login">
                     <p>BIENVENUE</p>
-                  {% csrf_token %}
                   {% for field in form %}
                     <div class="form-outline mb-4">
                   <p>
@@ -44,6 +43,7 @@
 
 
                   {% endfor %}
+                    {% csrf_token %}
                   <input type="hidden" name="idpro" value="{{ idpro }}">
                   <!--<p>BIENVENUE</p>
 

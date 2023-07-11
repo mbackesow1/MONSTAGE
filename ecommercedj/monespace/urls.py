@@ -10,7 +10,13 @@ urlpatterns = [
     path("login", loginin , name="connecterurnjjl"),
     path("indexentre", indexentre , name="connecterurlgh"),
 path("listcre/nom=<str:nom>", listecredit , name="connecterurlgghhhjh"),
+path("commande/idpro=<int:idpro>&idclt=<int:idclt>", commande , name="connecterurlgghhhjh"),
+path("compte/idu=<int:idu>", voircompte , name="connecterurlgghhhjh"),
+path("precommande/idpro=<int:idpro>&idclt=<int:idclt>", precommande , name="connecterurlgghhhjh"),
+path("traitecommande", traitecommande , name="connecterurlgghhhjh"),
+path("traiteprecommande", traiteprecommande , name="connecterurlgghhhjh"),
 path("listenoti/nom=<str:nom>", listenotific , name="connecterurrfflgghhhjh"),
+path("traitecommande/voirdtl/idcom=<int:idcom>", voirdlt , name="connecterurrfflgghhhjh"),
 path("listcre/voircpt/idclt=<int:idclt>", voircpt , name="connecterurrfflgghhhjh"),
 #path("ajoucom/<str:lstcom>", voircpt , name="connecterurrfflgghhhjh"),
 

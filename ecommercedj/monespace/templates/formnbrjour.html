@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="Post" action="/monespace/traiteprecommande">
+  {% csrf_token %}
+  <div class="mb-3">
+    <input type="number" name="nbrj"  id="nbrjour">
+  </div>
+  <div class="mb-3">
+    <input type="text" name="idpro" value="{{idpro}} ">
+  </div>
+  <div class="mb-3">
+    <input type="text" name="idclt" value="{{ idclt }}">
+  </div>
+  <button class="btn btn-primary" type="submit">Envoyer</button>
+</form>
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -5,7 +7,7 @@ from .formusers import UsersForm, FormLogin, Formodifie
 from django.contrib.auth.forms import PasswordResetForm
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
-from .models import Users, Entreprise, DmdCredit, Product, Commande
+from .models import Users, Entreprise, DmdCredit, Product, Commande, DétailsCommande, Precommande, Compte
 
 
 #from .models import Product
@@ -199,6 +201,68 @@ def ajoucom_view(request, lstcom):
         # Sauvegardez l'objet Commande dans la base de données
         nouvelle_commande.save()
         return  redirect("")
+
+
+def commande(request, idpro, idclt) :
+    return  render(request, "formqt.html",{"idpro":idpro , "idclt":idclt})
+def precommande(request, idpro, idclt) :
+    return  render(request, "formnbrjour.html",{"idpro":idpro , "idclt":idclt})
+
+def traitecommande(request) :
+    idpro = request.POST['idpro']
+    idclt = request.POST['idclt']
+    qt=request.POST['qt']
+    pro= Product.objects.get(idpro=idpro)
+    usercmd=Users.objects.get(idu=idclt)
+    #com=Commande()
+    commande = Commande(date=datetime.now(), etat=0, total= int(pro.price)  * qt, vandor="v9096", idclt=idclt , idpro=idpro, action="direct")
+    commande.save()
+    details_commande = DétailsCommande.objects.create(
+        commande=commande,
+        idpro=idpro,
+        quantite=qt,
+        prix_unitaire=pro.price
+    )
+    details_commande.save()
+
+
+    #com.idclt=idclt
+    #com.action="direct"
+    #com.idpro=idpro
+    #com.total= int(pro.price ) * qt
+    #com.save()
+    #comsauv=com.objects.latest('idcom')
+    #deta=DétailsCommande()
+    ##deta.idpro=idpro
+    #deta.quantite=qt
+    #deta.prix_unitaire=pro.price
+    #deta.commande=comsauv.idcom
+    #deta.save()
+    lst= Commande.objects.filter(idclt=idclt)
+    return   render(request , "affichecomm.html" , {"deta" : details_commande , "com": commande , "usercmd":usercmd , "lst":lst})
+def voirdlt( request  ,  idcom) :
+   det=DétailsCommande.objects.get(commande_id =4)
+   com=Commande.objects.get(idcom =det.commande_id)
+   user=Users.objects.get(idu=com.idclt)
+   pro=Product.objects.get(idpro=com.idpro)
+   return  render(request, "detailcom.html" , {"detcom":det, "com":com,"pro":pro,"user":user})
+def traiteprecommande(request) :
+    idpro = request.POST['idpro']
+    idclt = request.POST['idclt']
+    nbrj=request.POST['nbrj']
+    pro= Product.objects.get(idpro=idpro)
+    usercmd=Users.objects.get(idu=idclt)
+    lst = Commande.objects.filter(idclt=idclt)
+    precom=Precommande( idpro =idpro,idclt = idclt  , nbrjour = nbrj ,prix=pro.price, description=pro.description)
+    precom.save()
+    lstpre= Precommande.objects.filter(idclt=idclt)
+    return render(request, "afficheprecomm.html", {"com": commande, "usercmd": usercmd, "lstpre": lstpre})
+def voircompte(request , idu) :
+    ucom=Users.objects.get(idu=idu)
+    cpt=Compte.objects.get(idclt=idu)
+    return  render(request, "affichecompte.html",{"ucom":ucom, "cpt":cpt})
+
+
 
 
 

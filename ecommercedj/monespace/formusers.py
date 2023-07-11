@@ -1,5 +1,5 @@
 from django import forms
-from .models import Users, Entreprise, DmdCredit, Product, Commande
+from .models import Users, Entreprise, DmdCredit, Product, Commande, Compte
 
 
 class UsersForm(forms.ModelForm):
@@ -53,3 +53,7 @@ class ForDmdComm(forms.ModelForm):
     class Meta:
         model = Commande
         fields = "__all__"
+class Formcpt(forms.ModelForm):
+    class Meta:
+        model = Compte
+        fields =["montant"]
