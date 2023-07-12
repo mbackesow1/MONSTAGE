@@ -12,7 +12,8 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
-<body  class="d-flex align-items-center justify-content-center" style="background-color: #eee;">
+<body  class="" style="background-color: #eee;">
+{% include 'nav.html' %}
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -29,7 +30,7 @@
                 </div>
 
                 <form  method="Post" action="/monespace/login">
-                    <p>BIENVENUE</p>
+
                   {% for field in form %}
                     <div class="form-outline mb-4">
                   <p>
@@ -69,7 +70,7 @@
                       <button type="button" class="btn btn-outline-danger">Créer  un</button>
                     </a>
                   </div>
-                    <a  href="/monespace/indexentre">Je suis  une  enetreprise</a>
+                    <a  href="/monespace/indexentre">Je suis  une  entreprise</a>
 
                 </form>
 

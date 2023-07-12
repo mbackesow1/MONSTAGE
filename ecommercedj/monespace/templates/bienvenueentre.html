@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trois Boxes Alignées Horizontalement avec Image</title>
-    <!-- Inclusion des styles Bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-eUl1NLB5e6Q/2/hX7B35+K5YR9cmvliBKT1wvqLszaaA6ohzJfaH3aFfqq5ZJfhP" crossorigin="anonymous">
- {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
     <link href="{% static 'css/bootstrap.min.css' %}" >
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,13 +11,13 @@
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
+<body  class="" style="background-color: #eee;">
+{% include 'nav.html' %}
 
 <div class="container">
-    <div class="row">
-    <h1>GESTION  DES  CLIENTS {{ent.nom|upper}}</h1>
+    <div class="row  text-center font-italic">
+    <h1    class="text-center font-italic" style="margin-left:200px;">GESTION  DES  CLIENTS {{ent.nom|upper}}</h1>
     </div>
     <div class="row">
 

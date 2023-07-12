@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-eUl1NLB5e6Q/2/hX7B35+K5YR9cmvliBKT1wvqLszaaA6ohzJfaH3aFfqq5ZJfhP" crossorigin="anonymous">
- {% load static %}
+      {% load static %}
     <link href="{% static 'css/bootstrap.min.css' %}" >
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,45 +11,29 @@
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="/media/photos/lo.JPG" alt="Logo"></a>
+<body  class="" style="background-color: #eee;">
+{% include 'nav.html' %}
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container" >
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div>
+        <div class="card rounded-12 text-black">
+          <div class="row g-0">
+            <div class="col-lg-12">
+              <div class="card-body  mx-md-12">
+                  <div >
+                  <div class="container">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Accueil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Produits</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<h1>Liste des produits</h1>
-
-  <table>
-    <thead>
+                   <table class="table table-striped">
+                        <h4 class="text-center font-italic">Liste  des  Produits </h4>
+  <thead  class="bg-primary text-white">
       <tr>
         <th>ID</th>
         <th>Image</th>
         <th>Prix</th>
         <th>Description</th>
-        <th></th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -74,9 +57,10 @@
 
       </tr>
       {% endfor %}
-    <a href="index/idpro=1">index</a>
+
     </tbody>
   </table>
+</div>
 
   <script>
     // Fonction pour ajouter au panier

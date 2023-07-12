@@ -3,6 +3,8 @@ from datetime import datetime
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
+
 from .formusers import UsersForm, FormLogin, Formodifie
 from django.contrib.auth.forms import PasswordResetForm
 from django.core.mail import send_mail
@@ -13,6 +15,7 @@ from .models import Users, Entreprise, DmdCredit, Product, Commande, DétailsCom
 #from .models import Product
 #from ..ecommercedj.settings import DEFAULT_FROM_EMAIL
 #from  ..ecommercedj.settings import DEFAULT_FROM_EMAIL
+@csrf_exempt
 def index(request , idpro):
     idpro = idpro
     formi = FormLogin()
@@ -23,6 +26,7 @@ def creationUser(request):
     return render(request, 'crercompte.html', {'form': form})
 
 #Creer  utilisateur
+@csrf_exempt
 def  traitercompte(request):
     if request.method == "POST":
         #form = EmployeeForm(request.POST , request.FILES)
@@ -37,9 +41,13 @@ def  traitercompte(request):
     else:
         form = UsersForm()
     return render(request,'crercompte.html',{'form':form})
+@csrf_exempt
 def connecterUser(request, id):
     userbn = Users.objects.get(emailu=id)
     return render(request, 'bienvenue.html', {'userbn': userbn})
+
+
+@csrf_exempt
 def loginin(request):
     if request.method == 'POST':
         email = request.POST['emailu']
@@ -59,12 +67,14 @@ def loginin(request):
     return render(request, 'index.html', {'form': formi},{'error_message': error_message})
 
 ### Modification de  profil
+@csrf_exempt
 def update_user(request, idu):
     userup= Users.objects.get(idu=idu)
     #delattr(userup, 'image')
     formuserup= Formodifie(instance=userup)
     #formuserup= Formodifie()
     return render(request, 'updatepro.html', {'userup': formuserup})
+@csrf_exempt
 def trateupdate(request):
     userup=Users.objects.get(emailu=request.POST['emailu'])
     if request.method == 'POST':
@@ -110,9 +120,11 @@ def mdpu(request):
         form = PasswordResetForm()
 
     return render(request, 'mdpoub.html', {'form': form})
+@csrf_exempt
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'product_list.html', {'products':1})
+@csrf_exempt
 def lstpro(request):
     products = [
         {
@@ -136,6 +148,7 @@ def lstpro(request):
     ]
     return  render(request, 'product_list.html', {'products': products})
 ##traitement du panier
+@csrf_exempt
 def ajouter(request):
     for product in products:
         # Vérifier si l'ID du produit correspond à l'ID recherché
@@ -151,11 +164,13 @@ def ajouter(request):
 
 
 #####Gestion entreprise
+@csrf_exempt
 def indexentre(request):
    # idpro = idpro
     #formi = FormLogin()
     #return render(request, 'index.html', {'form': formi, 'idpro':idpro})
     return render(request, 'indexentre.html')
+@csrf_exempt
 def loginentre(request):
     if request.method == 'POST':
         noment = request.POST['noment']
@@ -173,6 +188,7 @@ def loginentre(request):
         error_message = 'Mot de passe incorrect. Veuillez réessayer.'
         #formi = FormLogin()
     return redirect("indexent ")
+@csrf_exempt
 def listecredit(request , nom) :
     #lst=DmdCredit.objects.get(noment=nom, status=1)
     lst = DmdCredit.objects.filter(noment=nom, status=1)
@@ -180,12 +196,14 @@ def listecredit(request , nom) :
     #usercre = Users.objects.get(idu=lst.idclt)
     return  render(request,'listecredit.html' , {'usercre':lst, 'noment':nom})
 
+@csrf_exempt
 def listenotific(request, nom):
         # lst=DmdCredit.objects.get(noment=nom, status=1)
         lst = DmdCredit.objects.filter(noment=nom, status=0)
         # usercre = Users.objects.filter(idu=lst.values('idclt'))
         # usercre = Users.objects.get(idu=lst.idclt)
         return render(request, 'listenoti.html', {'usercre': lst, 'noment': nom})
+@csrf_exempt
 def voircpt(request , idclt) :
     userup = Users.objects.get(idu=idclt)
     return render(request, 'voircpt.html', {'usercpt': userup})
@@ -193,6 +211,7 @@ def voircpt(request , idclt) :
 
 
     #return render(request, 'index.html', {'form': formi},{'error_message': error_message})
+@csrf_exempt
 def ajoucom_view(request, lstcom):
         # Divisez la chaîne de caractères en une liste d'éléments
         ma_liste = lstcom.split(',')
@@ -203,11 +222,14 @@ def ajoucom_view(request, lstcom):
         return  redirect("")
 
 
+@csrf_exempt
 def commande(request, idpro, idclt) :
     return  render(request, "formqt.html",{"idpro":idpro , "idclt":idclt})
+@csrf_exempt
 def precommande(request, idpro, idclt) :
     return  render(request, "formnbrjour.html",{"idpro":idpro , "idclt":idclt})
 
+@csrf_exempt
 def traitecommande(request) :
     idpro = request.POST['idpro']
     idclt = request.POST['idclt']
@@ -240,12 +262,14 @@ def traitecommande(request) :
     #deta.save()
     lst= Commande.objects.filter(idclt=idclt)
     return   render(request , "affichecomm.html" , {"deta" : details_commande , "com": commande , "usercmd":usercmd , "lst":lst})
+@csrf_exempt
 def voirdlt( request  ,  idcom) :
    det=DétailsCommande.objects.get(commande_id =4)
    com=Commande.objects.get(idcom =det.commande_id)
    user=Users.objects.get(idu=com.idclt)
    pro=Product.objects.get(idpro=com.idpro)
    return  render(request, "detailcom.html" , {"detcom":det, "com":com,"pro":pro,"user":user})
+@csrf_exempt
 def traiteprecommande(request) :
     idpro = request.POST['idpro']
     idclt = request.POST['idclt']
@@ -257,6 +281,7 @@ def traiteprecommande(request) :
     precom.save()
     lstpre= Precommande.objects.filter(idclt=idclt)
     return render(request, "afficheprecomm.html", {"com": commande, "usercmd": usercmd, "lstpre": lstpre})
+@csrf_exempt
 def voircompte(request , idu) :
     ucom=Users.objects.get(idu=idu)
     cpt=Compte.objects.get(idclt=idu)

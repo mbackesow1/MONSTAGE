@@ -1,67 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Formulaire de Facturation</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" >
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
-<body>
-    <div class="container">
-        <h2>Detail  Client</h2>
-        <ul class="list-group">
-            <li class="list-group-item">
+<body  class="" style="background-color: #eee;">
+{% include 'nav.html' %}
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container md-6" >
+      <div class="row  d-flex justify-content-center align-items-center">
+    <div class="col-6">
+
+
+        <h4 class="text-center font-italic">Detail  Client</h4>
+        <ul class="list-group list-group-flush ">
+            <li   class="list-group-item text-center font-italic">
                 <strong>Nom du Client:</strong>
                 <span id="nomClient"> {{user.nompreu}}</span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Email:</strong>
                 <span id="email">{{user.emailu}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Téléphone:</strong>
                 <span id="telephone">{{user.teleu}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Adresse:</strong>
                 <span id="adresse">{{user.adresseu}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Entreprise:</strong>
                 <span id="adresse">{{user.entreprise}} </span>
             </li>
         </ul>
         <br>
+    </div>
+      </div>
+  </div>
         <!--<button type="button" class="btn btn-primary" onclick="afficherFacture()">Afficher la Facture</button>-->
     </div>
     <div class="container">
-        <h2>Detail  Commande</h2>
+        <div class="row  d-flex justify-content-center align-items-center rounded">
+    <div class="col-6 rounded">
+         <h4 class="text-center font-italic">Detail  Commande</h4>
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Date:</strong>
                 <span id="nomClient"> {{com.date}}</span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Type  de commande:</strong>
                 <span id="email">{{com.action}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Produit:</strong>
                 <span id="telephone">{{pro.description}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Prix Unitaire:</strong>
                 <span id="adresse">{{pro.price}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Quantité</strong>
                 <span id="adresse">{{detcom.quantite}} </span>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-center font-italic">
                 <strong>Prix  total</strong>
                 <span id="adresse">{{com.total}} </span>
             </li>
+            <li class="list-group-item text-center font-italic">
+                <button type="button" class="btn btn-primary" onclick="afficherFacture()">Voir liste  commande</button>
+            </li>
+
         </ul>
+
         <br>
-        <button type="button" class="btn btn-primary" onclick="afficherFacture()">Voir liste  commande</button>
+    </div></div>
+    </div>
+
     </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

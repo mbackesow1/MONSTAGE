@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+      {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" >
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
-<body>
+<body  class="" style="background-color: #eee;">
+{% include 'nav.html' %}
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-12">
+              <div class="card-body p-md-5 mx-md-12">
+
+
+                <div class="text-center">
+                  <img src="/media/photos/lo.JPG"
+                    style="width: 185px;" alt="logo"/>
+                </div>
 <form method="Post" action="/monespace/traiteprecommande">
   {% csrf_token %}
   <div class="mb-3">
-    <input type="number" name="nbrj"  id="nbrjour">
+    <input type="number" name="nbrj"  id="nbrjour" class="form-control" placeholder="le  nombre  de  jours  prévu">
   </div>
   <div class="mb-3">
-    <input type="text" name="idpro" value="{{idpro}} ">
+    <input type="hidden" name="idpro" value="{{idpro}} ">
   </div>
   <div class="mb-3">
-    <input type="text" name="idclt" value="{{ idclt }}">
+    <input type="hidden" name="idclt" value="{{ idclt }}">
   </div>
-  <button class="btn btn-primary" type="submit">Envoyer</button>
+  <button class="btn btn-primary" type="submit">ok</button>
 </form>
 
 </body>
